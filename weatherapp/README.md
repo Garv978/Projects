@@ -1,18 +1,97 @@
-# React + Vite
+🌦️ Weather.EXE — Retro Pixel Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A retro-styled pixel weather application with a custom Figma-designed UI, animated characters, dynamic backgrounds, and a fast Vite + Tailwind CSS setup.
+The app provides real-time weather, humidity, AQI, and recommendations based on live data.
 
-Currently, two official plugins are available:
+🎨 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🖌️ Custom UI Designed in Figma
+👾 Animated Characters
+🌤️ Dynamic Weather Backgrounds
 
-## React Compiler
+Background image changes based on weather type
+Smooth transitions for clear, clouds, rain, snow, fog, etc.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+⚡ Super Fast Frontend
 
-Note: This will impact Vite dev & build performances.
+Built using:
+React + Vite (lightning fast dev + builds)
+Tailwind CSS (utility-first styling)
+ES Modules backend weather API
+🛰️ Backend Weather API
+Node.js + Express backend
+API key privately handled with .env
+Clean /weather?city=Delhi endpoint
+Prevents leaking your OpenWeather API key
+CORS enabled for frontend use
 
-## Expanding the ESLint configuration
+🚀 Tech Stack
+Layer	Technology
+UI Design	Figma
+Frontend	React + Vite
+Styling	Tailwind CSS
+Backend	Node.js + Express
+Data Source	OpenWeatherMap API
+📁 Folder Structure
+root/
+│
+├── weather-frontend/        # React + Vite + Tailwind UI
+│   ├── src/
+│   │   ├── components/      # Weather UI + animated sprite
+│   │   ├── assets/          # Icons, sprites, background images
+│   │   └── App.jsx
+│   └── public/
+│
+└── weather-backend/         # Node.js + Express API
+    ├── index.js             # Weather route
+    ├── .env                 # API key (private)
+    ├── package.json
+    └── node_modules/
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🛠️ Installation & Setup
+1. Clone the Repository
+git clone <your-repo-url>
+
+⚛️ Frontend Setup (React + Vite + Tailwind)
+1. Go to frontend folder:
+cd weather-frontend
+
+2. Install dependencies:
+npm install
+
+3. Start dev server:
+npm run dev
+
+
+The frontend should run at:
+http://localhost:5173/
+
+🌐 Backend Setup (Node.js + Express)
+1. Go to backend folder:
+cd weather-backend
+
+2. Install dependencies:
+npm install
+
+3. Add your .env file:
+OPENWEATHER_KEY=YOUR_API_KEY
+
+4. Start server:
+node index.js
+
+Backend runs at:
+
+http://localhost:5000/weather?city=Delhi
+
+🙌 Contributing
+
+Contributions are welcome!
+Feel free to:
+
+Open issues
+Suggest features
+Submit pull requests
+
+📝 License
+
+This project is open-source and available under the MIT License.
