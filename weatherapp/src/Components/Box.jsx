@@ -77,7 +77,7 @@ function Box({
           <p className="absolute bottom-12 left-4 text-2xl">Recommendation:</p>
           <p className="absolute bottom-7 left-4 text-2xl">{recommendation}</p>
 
-          <div className="absolute bottom-6 right-6 w-[20 h-20 rounded-lg overflow-hidden border-2 border-white/70">
+          <div className="absolute bottom-6 right-6 w-20 h-20 rounded-lg overflow-hidden border-2 border-white/70">
             <img
               src={chibi} // <-- pass another image prop
               className="w-full h-full object-cover"

@@ -3,21 +3,36 @@ import axios from "axios";
 import cors from "cors";
 import "dotenv/config";
 
-
 const app = express();
 app.use(cors());
 
 function getBackground(weatherMain) {
   switch (weatherMain) {
-    case "Clear": return "/seasons/cloudy.png";
-    case "Clouds": return "/seasons/cloudy.png";
-    case "Rain": return "/seasons/cloudy.png";
-    case "Snow": return "/seasons/cloudy.png";
-    case "Mist": return "/seasons/cloudy.png";
-    case "Fog": return "/seasons/cloudy.png";
-    default: return "/seasons/cloudy.png";
+    case "Clear":
+      return "/seasons/clear.png";
+    case "Clouds":
+      return "/seasons/cloudy.png";
+    case "Rain":
+      return "/seasons/rain.png";
+    case "Drizzle":
+      return "/seasons/drizzle.png";
+    case "Thunderstorm":
+      return "/seasons/thunderstorm.png";
+    case "Snow":
+      return "/seasons/snow.png";
+    case "Mist":
+      return "/seasons/mist.png";
+    case "Fog":
+      return "/seasons/fog.png";
+    case "Haze":
+      return "/seasons/haze.png";
+    case "Smoke":
+      return "/seasons/smoke.png";
+    default:
+      return "/seasons/cloudy.png";
   }
 }
+
 function getRecommendation(weatherMain) {
   switch (weatherMain) {
     case "Clear":
@@ -47,7 +62,6 @@ function getRecommendation(weatherMain) {
   }
 }
 
-
 app.get("/weather", async (req, res) => {
   try {
     const city = req.query.city || "Delhi";
@@ -60,11 +74,19 @@ app.get("/weather", async (req, res) => {
     const temp = data.main.temp;
     const humidity = data.main.humidity;
     const daytype = data.weather[0].main;
-    const tomorrowday = Math.round(temp + 2);// placeholder
-    const aqi = 50;  // placeholder
+    const tomorrowday = Math.round(temp + 2); // placeholder
+
+    const lat = data.coord.lat;
+    const lon = data.coord.lon;
+    const aqiUrl = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${process.env.OPENWEATHERAPI_KEY}`;
+    const air = await axios.get(aqiUrl);
+    const aqi = air.data.list[0].main.aqi;
+
     const image = getBackground(daytype);
-const recommendation = getRecommendation(daytype);
-    const chibi = "/chibi/Slice1.png"
+    const recommendation = getRecommendation(daytype);
+    const randomIndex = Math.floor(Math.random() * 8) + 1;
+    const chibi = `/chibi/Slice${randomIndex}.png`;
+
     res.json({
       image,
       daytype,
@@ -73,11 +95,12 @@ const recommendation = getRecommendation(daytype);
       temp,
       tomorrowday,
       recommendation,
-      chibi
+      chibi,
     });
-
   } catch (err) {
-    res.status(500).json({ error: "Weather fetch failed", details: err.message });
+    res
+      .status(500)
+      .json({ error: "Weather fetch failed", details: err.message });
   }
 });
 
