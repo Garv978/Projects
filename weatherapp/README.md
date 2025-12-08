@@ -13,6 +13,7 @@ Background image changes based on weather type
 Smooth transitions for clear, clouds, rain, snow, fog, etc.
 
 ⚡ Super Fast Frontend
+![Uploading image.png…]()
 
 Built using:
 React + Vite (lightning fast dev + builds)
